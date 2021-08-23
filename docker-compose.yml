@@ -1,0 +1,30 @@
+version: "3"
+services:
+  db:
+    image: 'postgres:13.1-alpine'
+    container_name: db
+    environment:
+      - POSTGRES_USER=praca
+      - POSTGRES_PASSWORD=praca
+      - POSTGRES_DB=maindb
+    ports:
+      - "5432:5432"
+    networks:
+      - local-net
+
+  sample-crud:
+    container_name: sample-crud
+    build:
+      context: sample-crud
+      dockerfile: Dockerfile
+    depends_on:
+        - db
+    image: "sample-crud:1.0-SNAPSHOT"
+    ports:
+      - "8070:8080"
+    networks:
+      - local-net
+
+networks:
+  local-net:
+    driver: bridge
