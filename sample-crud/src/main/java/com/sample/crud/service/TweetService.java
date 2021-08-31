@@ -22,7 +22,7 @@ public class TweetService {
     }
 
     public List<Tweet> getAll() {
-        return repository.findAll();
+        return repository.findAllByOrderByDateDesc();
     }
 
     public void delete(long id) {

@@ -21,7 +21,7 @@ services:
         - db
     image: "sample-crud:1.0-SNAPSHOT"
     ports:
-      - "8070:8080"
+      - "8070:8070"
     networks:
       - local-net
 
